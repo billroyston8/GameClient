@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     {
         health = _health;
 
-        if(health <= 0)
+        if(health <= 0f)
         {
             Die();
         }
