@@ -10,7 +10,9 @@ public class Client : MonoBehaviour
     public static Client instance;
     public static int dataBufferSize = 4096;
 
-    public string ip = "127.0.0.1";
+    //string[] arguments = Environment.GetCommandLineArgs().GetValue(1);
+
+    public string ip;// = "127.0.0.1";
     public int port = 26950;
     public int myId = 0;
     public TCP tcp;
@@ -23,7 +25,11 @@ public class Client : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        //ip = "127.0.0.1";
+        ip = "18.217.4.3";
+        //ip = Environment.GetCommandLineArgs().GetValue(1).ToString();
+
+        if (instance == null)
         {
             instance = this;
         }
@@ -39,8 +45,20 @@ public class Client : MonoBehaviour
         Disconnect();
     }
 
+    //public bool ConnectToServer(string _ip)
     public void ConnectToServer()
     {
+        //IPAddress hardIP;
+        //bool flag = IPAddress.TryParse(_ip, out hardIP);
+        //if (flag)
+        //{
+        //    ip = _ip;
+        //}
+        //else
+        //{
+        //    return false;
+        //}
+
         tcp = new TCP();
         udp = new UDP();
 
@@ -48,6 +66,7 @@ public class Client : MonoBehaviour
 
         isConnected = true;
         tcp.Connect();
+
     }
 
     public class TCP

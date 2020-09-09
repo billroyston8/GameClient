@@ -54,7 +54,12 @@ public class GameManager : MonoBehaviour
     public void SpawnProjectile(int _id, Vector3 _position)
     {
         GameObject _projectile = Instantiate(projectilePrefab, _position, Quaternion.identity);
+        //Vector3.Lerp(startPosition, targetPosition, time / duration);
+        //GameObject _projectile = Instantiate(projectilePrefab, Vector3.Lerp(_position, _position + Vector3.forward, Time.deltaTime/.1f), Quaternion.identity);
+        ///
         _projectile.GetComponent<ProjectileManager>().Initialize(_id);
         projectiles.Add(_id, _projectile.GetComponent<ProjectileManager>());
+        //_projectile.transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        //_projectile.GetComponent<ProjectileManager>().Move(_projectile.transform.position + Vector3.forward);
     }
 }

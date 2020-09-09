@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject startMenu;
     public InputField usernameField;
+    public InputField ipField;
 
     private void Awake()
     {
+        ipField.text = Environment.GetCommandLineArgs().GetValue(1).ToString();
         if (instance == null)
         {
             instance = this;
@@ -28,5 +31,10 @@ public class UIManager : MonoBehaviour
         startMenu.SetActive(false);
         usernameField.interactable = false;
         Client.instance.ConnectToServer();
+        //if (!Client.instance.ConnectToServer(ipField.text))
+        //{
+        //    startMenu.SetActive(true);
+        //    usernameField.interactable = true;
+        //}
     }
 }

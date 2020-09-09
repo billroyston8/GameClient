@@ -106,6 +106,7 @@ public class ClientHandle : MonoBehaviour
         int _projectileId = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
 
+        //GameManager.projectiles[_projectileId].Move(_position);
         GameManager.projectiles[_projectileId].transform.position = _position;
     }
 
