@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum State
+{
+    rifleIdle = 0,
+    rifleWalkingForward = 1
+}
+
 public class PlayerManager : MonoBehaviour
 {
     public int id;
@@ -10,12 +16,16 @@ public class PlayerManager : MonoBehaviour
     public float maxHealth = 100f;
     public int itemCount = 0;
     public MeshRenderer model;
+    public State state;
+
+    public Animator animator;
 
     public void Initialize(int _id, string _username)
     {
         id = _id;
         username = _username;
         health = maxHealth;
+        state = State.rifleIdle;
     }
 
     public void SetHealth(float _health)
@@ -28,14 +38,28 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void SetState(int _state)
+    {
+        if(_state != (int)state)
+        {
+            state = (State)_state;
+            animator.SetInteger("State", _state);
+        }
+    }
+
+    public void SetState(State _state)
+    {
+        SetState((int)_state);
+    }
+
     public void Die()
     {
-        model.enabled = false;
+        //model.enabled = false;
     }
 
     public void Respawn()
     {
-        model.enabled = true;
+        //model.enabled = true;
         SetHealth(maxHealth);
     }
 }

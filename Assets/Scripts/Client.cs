@@ -26,8 +26,8 @@ public class Client : MonoBehaviour
     private void Awake()
     {
         //ip = "127.0.0.1";
-        ip = "18.217.4.3";
-        //ip = Environment.GetCommandLineArgs().GetValue(1).ToString();
+        //ip = "18.217.4.3";
+        ip = Environment.GetCommandLineArgs().GetValue(1).ToString();
 
         if (instance == null)
         {
@@ -306,7 +306,8 @@ public class Client : MonoBehaviour
             {(int)ServerPackets.itemPickedUp, ClientHandle.ItemPickedUp },
             {(int)ServerPackets.spawnProjectile, ClientHandle.SpawnProjectile },
             {(int)ServerPackets.projectilePosition, ClientHandle.ProjectilePosition },
-            {(int)ServerPackets.projectileExploded, ClientHandle.ProjectileExploded }
+            {(int)ServerPackets.projectileExploded, ClientHandle.ProjectileExploded },
+            {(int)ServerPackets.playerState, ClientHandle.PlayerState }
         };
         Debug.Log("Initialized packets.");
     }

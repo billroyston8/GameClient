@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        ipField.text = Environment.GetCommandLineArgs().GetValue(1).ToString();
+        //ipField.text = Environment.GetCommandLineArgs().GetValue(1).ToString();
         if (instance == null)
         {
             instance = this;

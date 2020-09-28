@@ -33,6 +33,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
 
         GameManager.players[_id].transform.position = _position;
+        //GameManager.players[_id].animator
     }
 
     public static void PlayerRotation(Packet _packet)
@@ -116,5 +117,14 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
 
         GameManager.projectiles[_projectileId].Explode(_position);
+    }
+
+    public static void PlayerState(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        int _state = _packet.ReadInt();
+
+        GameManager.players[_id].SetState(_state);
+        //GameManager.players[_id].transform.position = _position;
     }
 }
